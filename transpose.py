@@ -2,11 +2,7 @@ from types import new_class
 import numpy as np
 
 def transpose(matrix):
-    """
-    Transpose a matrix.
-    """
     new_matrix = []
-    #return [[row[i] for row in matrix] for i in range(len(matrix[0]))]
     for i in range(len(matrix[0])):
         row = []
         for j in range(len(matrix)):
