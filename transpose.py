@@ -1,6 +1,5 @@
-from hashlib import new
-from numpy import matrix
-
+from types import new_class
+import numpy as np
 
 def transpose(matrix):
     """
@@ -16,11 +15,18 @@ def transpose(matrix):
     return new_matrix
 def determinant(matrix):
     if len(matrix) == 1:
-        return matrix[0][0]
+        return matrix[0,0]
     else:
+        determinant_number = 0
         for i in range(len(matrix)):
-            determinant_number += matrix[0][i] * (-1)**(i+1) * determinant()
-            print(determinant_number)
+            determinant_number += matrix[0,i] * (-1)**(i+1) * determinant(slice_matrix(matrix,i))
     return determinant_number
+def slice_matrix(matrix,i):
+    new_matrix=[]
+    for j in range(len(matrix)):
+        if j!=i:
+            new_matrix.append(matrix[1:,j])
+    return np.array(new_matrix)
 matrix = [[-1, 2, 4], [6, 3, 5], [-3, 7, 0]]
-print(determinant(matrix))
+new_matrix = np.array(matrix)
+print(determinant(new_matrix))
