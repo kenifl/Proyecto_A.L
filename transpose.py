@@ -23,6 +23,6 @@ def slice_matrix(matrix,i):
         if j!=i:
             new_matrix.append(matrix[1:,j])
     return np.array(new_matrix)
-matrix = [[-1, 2, 4], [6, 3, 5], [-3, 7, 0]]
+matrix = [[-10, 5, -3], [2, -2, 2], [17, -5, 1]]
 new_matrix = np.array(matrix)
 print(determinant(new_matrix))
