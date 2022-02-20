@@ -1,5 +1,6 @@
+from fractions import Fraction
 # Producto escalar
-k=float(input("Ingrese el número por el cuál desea multiplicar: "))
+k = Fraction(input("Ingrese el número por el cuál desea multiplicar: "))
 
 print ("\nMatriz")
 print("----------------------------\n")
@@ -15,7 +16,7 @@ for i in range (f):
 
 for i in range(f):
 		for j in range(c):
-			mres[i][j] = float(input("Posición (" + str(i+1) + "," + str(j+1) + "): "))
+			mres[i][j] = Fraction(input("Posición (" + str(i+1) + "," + str(j+1) + "): "))
 
 for i in range(f):
 	for j in range(c):

@@ -1,7 +1,4 @@
-unknowns = int(input("Number of unknowns: "))
-matrix = []
-for i in range(unknowns):
-    matrix.append([0] * (unknowns + 1))
+from fractions import Fraction
 
 def imprimirEcuacion(x = -1, y = -1):
     placeholder = "[]"
@@ -16,7 +13,7 @@ def imprimirEcuacion(x = -1, y = -1):
     print()
 
 def one(row, column):
-    if matrix[row][column] != 0:
+    if matrix[row][column] != Fraction(0, 1):
         operation = matrix[row][column]
         for i in range(unknowns+1):
             matrix[row][i] /= operation
@@ -25,15 +22,20 @@ def one(row, column):
 def zeros(row, column):
     for i in range(unknowns):
         if i != row:
-            operation = matrix[i][column] * -1
+            operation = matrix[i][column] * Fraction(-1, 1)
             for j in range(unknowns+1):
                 matrix[i][j] = matrix[i][j] + (operation * matrix[row][j])
     # imprimirEcuacion()
 
+unknowns = int(input("Number of unknowns: "))
+matrix = []
+for i in range(unknowns):
+    matrix.append([0] * (unknowns + 1))
+
 for i in range(unknowns):
     for j in range(unknowns + 1):
         imprimirEcuacion(i, j)
-        matrix[i][j] = int(input("Enter the value of the unknown: "))
+        matrix[i][j] = Fraction(input("Enter value of the unknown: "))
 print()
 imprimirEcuacion()
 for i in range (unknowns):

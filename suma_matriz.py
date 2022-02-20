@@ -1,5 +1,5 @@
+from fractions import Fraction
 #SUMA
-
 filas = int(input ("Introduzca el número de filas de sus matrices: "))
 columnas = int(input ("Introduzca el número de columnas de sus matrices: "))
 
@@ -14,12 +14,12 @@ for i in range (filas):
 print ("Ingrese su Matriz 1")
 for i in range(filas):
 		for j in range(columnas):
-			matriz_1[i][j] = int(input('Elemento (%d,%d): ' % (i, j)))
+			matriz_1[i][j] = Fraction(input('Elemento (%d,%d): ' % (i, j)))
 
 print("Ingrese su Matriz 2")
 for i in range(filas):
 	for j in range(columnas):
-			matriz_2[i][j] = int(input('Elemento (%d,%d): ' % (i, j)))
+			matriz_2[i][j] = Fraction(input('Elemento (%d,%d): ' % (i, j)))
             
 
 for i in range(filas):
