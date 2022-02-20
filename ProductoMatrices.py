@@ -1,7 +1,7 @@
 # Producto de matrices
 
-def checartamano(f1,c2):
-    if f1 == c2:
+def checartamano(c1,f2):
+    if c1 == f2:
         print("Listo para capturar datos\n")
         return True
     else:
@@ -59,7 +59,7 @@ f2 = int(input ("Introduzca el número de filas de su matriz 2: "))
 c2= int(input ("Introduzca el número de columnas de su matriz 2: "))
 print()
 
-v = checartamano(f1,c2)
+v = checartamano(c1,f2)
 
 if v == True:
     calcular()
