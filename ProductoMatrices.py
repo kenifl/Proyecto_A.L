@@ -1,8 +1,10 @@
+from fractions import Fraction
+
 # Producto de matrices
 
 def checartamano(c1,f2):
     if c1 == f2:
-        print("Listo para capturar datos\n")
+        print("Ready for data capture\n")
         return True
     else:
         print("Dimension Error")
@@ -24,17 +26,17 @@ def calcular():
         mres.append([0] * c2)
 
 
-    print("\nMatriz 1")
+    print("\n1st Matrix")
     print("---------------\n")
     for i in range(f1):
             for j in range(c1):
-                m1[i][j] = float(input("Posición (" + str(i+1) + "," + str(j+1) + "): "))
+                m1[i][j] = Fraction(input("Position (" + str(i+1) + "," + str(j+1) + "): "))
 
-    print("\nMatriz 2")
+    print("\n2nd Matrix")
     print("---------------\n")
     for i in range(f2):
             for j in range(c2):
-                m2[i][j] = float(input("Posición (" + str(i+1) + "," + str(j+1) + "): "))
+                m2[i][j] = Fraction(input("Position (" + str(i+1) + "," + str(j+1) + "): "))
     print()
 
     
@@ -47,16 +49,16 @@ def calcular():
         print(element)
 
 
-print ("\nMatriz 1")
+print ("\n1st Matrix")
 print("----------------------------\n")
-f1 = int(input ("Introduzca el número de filas de su matriz 1: "))
-c1= int(input ("Introduzca el número de columnas de su matriz 1: "))
+f1 = Fraction(input("Enter the number of rows in your first matrix: "))
+c1= Fraction(input("Enter the number of columns in your first matrix: "))
 print()
 
-print ("\nMatriz 2")
+print ("\n2nd Matrix")
 print("----------------------------\n")
-f2 = int(input ("Introduzca el número de filas de su matriz 2: "))
-c2= int(input ("Introduzca el número de columnas de su matriz 2: "))
+f2 = Fraction(input ("Enter the number of rows in your second matrix: "))
+c2= Fraction(input ("Enter the number of columns in your second matrix: "))
 print()
 
 v = checartamano(c1,f2)
