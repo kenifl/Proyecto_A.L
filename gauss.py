@@ -1,4 +1,4 @@
-from unittest import result
+from fractions import Fraction
 
 
 unknowns = int(input("Number of unknowns: "))
@@ -24,7 +24,7 @@ def imprimirEcuacion(x=-1, y=-1):
 
 
 def one(row, column):
-    if matrix[row][column] != 0:
+    if matrix[row][column] != Fraction(0, 1):
         operation = matrix[row][column]
         for i in range(unknowns+1):
             matrix[row][i] /= operation
@@ -33,7 +33,7 @@ def one(row, column):
 
 def zeros(row, column):
     for i in range(row+1 , unknowns):
-        operation = matrix[i][column] * -1
+        operation = matrix[i][column] * Fraction(-1, 1)
         for j in range(unknowns+1):
             matrix[i][j] = matrix[i][j] + (operation * matrix[row][j])
     # imprimirEcuacion()
@@ -49,7 +49,7 @@ def resultado():
 for i in range(unknowns):
     for j in range(unknowns + 1):
         imprimirEcuacion(i, j)
-        matrix[i][j] = int(input("Enter the value of the unknown: "))
+        matrix[i][j] = Fraction(input("Enter the value of the unknown: "))
 print()
 imprimirEcuacion()
 for i in range(unknowns):
