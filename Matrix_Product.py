@@ -1,17 +1,16 @@
+# Matrix Product
+
 from fractions import Fraction
 
-# Producto de matrices
-
-def checartamano(c1,f2):
+def check_size(c1,f2):
     if c1 == f2:
         print("Ready for data capture\n")
         return True
     else:
-        print("Dimension Error")
+        print("Dimension Error\n")
         return False
 
-
-def calcular():
+def calculate():
     m1=[]
     m2=[]
     mres=[]
@@ -22,8 +21,8 @@ def calcular():
     for i in range(f2):
         m2.append([0] * c2)
 
-    for i in range(f1):
-        mres.append([0] * c2)
+    for i in range(f2):
+        mres.append([0] * c1)
 
 
     print("\n1st Matrix")
@@ -39,7 +38,7 @@ def calcular():
                 m2[i][j] = Fraction(input("Position (" + str(i+1) + "," + str(j+1) + "): "))
     print()
 
-    
+
     for i in range(len(m1)):
         for j in range(len(m2[0])):
             for k in range(len(m2)):
@@ -51,19 +50,19 @@ def calcular():
 
 print ("\n1st Matrix")
 print("----------------------------\n")
-f1 = Fraction(input("Enter the number of rows in your first matrix: "))
-c1= Fraction(input("Enter the number of columns in your first matrix: "))
+f1 = int(input("Enter the number of rows in your first matrix: "))
+c1 = int(input("Enter the number of columns in your first matrix: "))
 print()
 
 print ("\n2nd Matrix")
 print("----------------------------\n")
-f2 = Fraction(input ("Enter the number of rows in your second matrix: "))
-c2= Fraction(input ("Enter the number of columns in your second matrix: "))
+f2 = int(input ("Enter the number of rows in your second matrix: "))
+c2 = int(input ("Enter the number of columns in your second matrix: "))
 print()
 
-v = checartamano(c1,f2)
+v = check_size(c1,f2)
 
 if v == True:
-    calcular()
-else: 
+    calculate()
+else:
     print()
