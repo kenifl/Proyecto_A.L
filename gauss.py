@@ -17,26 +17,28 @@ def imprimirEcuacion(x=-1, y=-1):
                 f"{placeholder if (i == x and j == y) else str(matrix[i][j])}{chr(letter)}", end=" ")
             letter = (letter + 1) if letter < 122 else 97
             if j < unknowns - 1:
-                print("+ ", end="")
+                print(" ", end="")
         print(
-            f"= {placeholder if (i == x and unknowns == y) else str(matrix[i][unknowns])}")
+            f"| {placeholder if (i == x and unknowns == y) else str(matrix[i][unknowns])}")
     print()
 
 
 def one(row, column):
+    operation = matrix[row][column]
+    print(f"{1 / operation}R{row}")
     if matrix[row][column] != Fraction(0, 1):
-        operation = matrix[row][column]
         for i in range(unknowns+1):
             matrix[row][i] /= operation
-    # imprimirEcuacion()
+    imprimirEcuacion()
 
 
 def zeros(row, column):
     for i in range(row+1 , unknowns):
         operation = matrix[i][column] * Fraction(-1, 1)
+        print(f"{operation}R{row} + R{i}")
         for j in range(unknowns+1):
             matrix[i][j] = matrix[i][j] + (operation * matrix[row][j])
-    # imprimirEcuacion()
+    imprimirEcuacion()
 
 def resultado():
     for i in reversed(range(unknowns)):
@@ -55,4 +57,5 @@ imprimirEcuacion()
 for i in range(unknowns):
     one(i, i)
     zeros(i, i)
+imprimirEcuacion()
 resultado()
