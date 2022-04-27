@@ -5,7 +5,7 @@ var f = 2;
 var c = 2;
 
 var matrix = Array(f);
-matrix1.fill(Array(c).fill(0));
+matrix.fill(Array(c).fill(0));
 
 //aquí irían asignaciones
 
