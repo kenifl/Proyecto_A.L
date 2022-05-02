@@ -1,4 +1,4 @@
-const { fraction, add, multiply, divide, equal } = require('mathjs');
+const { simplify } = require('mathjs');
 
 var imprimirEcuacion = (unknowns, matrix,  x = -1, y = -1) => {
     var placeholder = '[]';
@@ -21,12 +21,13 @@ var imprimirEcuacion = (unknowns, matrix,  x = -1, y = -1) => {
 var one = (unknowns, matrix, x, y) => {
     console.log('one');
     
-    if (!equal(matrix[x][y], fraction(0, 1)))
+    if (matrix[x][y] != '0')
     {
         var operation = matrix[x][y];
         for (var i = 0; i < unknowns+1; i++)
         {
-            matrix[x][i] = divide(matrix[x][i], operation);
+            temp = matrix[x][i] + '/' + operation;
+            matrix[x][i] = simplify(temp);
         }
     }
     imprimirEcuacion(unknowns, matrix);
@@ -38,10 +39,11 @@ var zeros = (unknowns, matrix, x, y) => {
     {
         if(i != x)
         {
-            var operation = multiply(matrix[i][y], fraction(-1, 1));
+            var operation = matrix[i][y] + '*-1';
             for (var j = 0; j < unknowns+1; j++)
             {
-                matrix[i][j] = add(matrix[i][j], multiply(operation, matrix[x][j]));
+                temp = matrix[i][j] + '+(' + operation + '*' + matrix[x][j] + ')';
+                matrix[i][j] = simplify(temp);
             }
         }
     }
@@ -58,7 +60,7 @@ for (var i = 0; i < unknowns; i++)
     for (var j = 0; j < unknowns+1; j++)
     {
         imprimirEcuacion(unknowns, matrix, i, j);
-        matrix[i][j] = fraction(2, 1);
+        matrix[i][j] = '6';
     }
 }
 console.log('\n');

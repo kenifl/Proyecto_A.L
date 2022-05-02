@@ -1,4 +1,4 @@
-const { fraction, add, multiply, divide, equal, pow } = require('mathjs');
+const { simplify } = require('mathjs');
 
 var transpose = function(matrix) {
     var rows = matrix.length;
