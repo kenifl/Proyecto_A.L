@@ -1,4 +1,4 @@
-const { fraction, add, multiply, divide, equal } = require('mathjs');
+const { fraction, add, multiply, divide, equal, simplify } = require('mathjs');
 
 var rows = 3;
 var columns = 2;
@@ -15,6 +15,7 @@ for(var i = 0; i < rows; i++)
 {
     for(var j = 0; j < columns; j++)
     {
-        res[i][j] = add(matrix1[i][j], matrix2[i][j]);
+        // res[i][j] = add(matrix1[i][j], matrix2[i][j]);
+        res[i][j] = simplify(matrix1[i][j], matrix2[i][j]);
     }
 }

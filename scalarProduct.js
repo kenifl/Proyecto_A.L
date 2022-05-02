@@ -1,4 +1,4 @@
-const { fraction, add, multiply, divide, equal } = require('mathjs');
+const { fraction, add, multiply, divide, equal, simplify } = require('mathjs');
 
 var k = 3;
 var f = 2;
@@ -13,6 +13,7 @@ for(var i = 0; i < f; i++)
 {
     for(var j = 0; j < c; j++)
     {
-        matrix[i][j] = multiply(matrix[i][j], k);
+        var temp = matrix[i][j] + '*' + k;
+        matrix[i][j] = simplify(temp);
     }
 }

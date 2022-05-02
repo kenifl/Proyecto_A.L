@@ -1,4 +1,4 @@
-const { fraction, add, multiply, divide, equal } = require('mathjs');
+const { fraction, add, multiply, divide, equal, simplify } = require('mathjs');
 
 var f = 3
 var c = 2
@@ -17,7 +17,9 @@ for(var i = 0; i < matrix1.length; i++)
     {
         for(var k = 0; k < matrix2.length; k++)
         {
-            res[i][j] = add(res[i][j], multiply(matrix1[i][k], matrix2[k][j]));
+            var temp = res[i][j] + '+(' + matrix1[i][k] + '*' + matrix2[k][j] + ')';
+            // res[i][j] = add(res[i][j], multiply(matrix1[i][k], matrix2[k][j]));
+            res[i][j] = simplify(temp);
         }
     }
 }
