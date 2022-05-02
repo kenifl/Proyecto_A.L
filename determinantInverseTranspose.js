@@ -87,6 +87,6 @@ var sliceMatrix2D = function(matrix, i, j) {
 }
 
 var inverse = function(matrix) {
-    inverseMatrix = adjugate(matrix) + '/' + determinant(matrix);
+    inverseMatrix = simplify(adjugate(matrix) + '/' + determinant(matrix));
     return inverseMatrix;
 }
