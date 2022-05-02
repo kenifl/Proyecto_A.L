@@ -4,7 +4,7 @@ var transpose = function(matrix) {
     var rows = matrix.length;
     var columns = matrix[0].length;
     var res = Array(columns);
-    res.fill(Array(rows).fill(0));
+    res.fill(Array(rows).fill('0'));
     for(var i = 0; i < rows; i++)
     {
         for(var j = 0; j < columns; j++)
@@ -25,8 +25,10 @@ var determinant = function(matrix) {
         var determinantNumber = 0;
         for(var i = 0; i < matrix.length; i++)
         {
-            var temp = multiply(matrix[0][i], pow(-1, i + 1));
-            determinantNumber = add(determinantNumber, multiply(temp, determinant(sliceMatrix(matrix, i))));
+            var temp = determinantNumber + '+(' + matrix[0][i] + '*(-1^(' + i + '+1))' + '*' + determinant(sliceMatrix(matrix, i)) + ')';
+            // var temp = multiply(matrix[0][i], pow(-1, i + 1));
+            // determinantNumber = add(determinantNumber, multiply(temp, determinant(sliceMatrix(matrix, i))));
+            determinantNumber = simplify(temp);
         }
     }
     return determinantNumber;
@@ -50,7 +52,8 @@ var adjugate = function(matrix) {
     {
         for(var j = 0; j < matrix.length; j++)
         {
-            matrix[i][j] = multiply(determinant(sliceMatrix2D(matrix, i, j)), pow(-1, i + j + 3));
+            var temp = determinant(sliceMatrix2D(matrix, i, j)) + '*(-1^' + (i + j + 3) + ')';
+            matrix[i][j] = simplify(temp);
         }
     }
     matrix = transpose(matrix);
@@ -84,6 +87,6 @@ var sliceMatrix2D = function(matrix, i, j) {
 }
 
 var inverse = function(matrix) {
-    inverseMatrix = divide(adjugate(matrix), determinant(matrix));
+    inverseMatrix = adjugate(matrix) + '/' + determinant(matrix);
     return inverseMatrix;
 }
