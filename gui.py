@@ -87,41 +87,49 @@ class Principal(QMainWindow):
             matrix.append(row)
     
     def suma(self):
+        self.getMatrix()
         # self.mainWindow = homeAdmin(self.id)
         self.mainWindow.show()
         self.close()
     
     def multiMatrices(self):
+        self.getMatrix()
         # self.mainWindow = homeAdmin(self.id)
         self.mainWindow.show()
         self.close()
 
     def escalar(self):
+        self.getMatrix()
         # self.mainWindow = homeAdmin(self.id)
         self.mainWindow.show()
         self.close()
 
     def determinante(self):
+        self.getMatrix()
         # self.mainWindow = homeAdmin(self.id)
         self.mainWindow.show()
         self.close()
 
     def inversa(self):
+        self.getMatrix()
         # self.mainWindow = homeAdmin(self.id)
         self.mainWindow.show()
         self.close()
 
     def transpuesta(self):
+        self.getMatrix()
         # self.mainWindow = homeAdmin(self.id)
         self.mainWindow.show()
         self.close()
 
     def adjunta(self):
+        self.getMatrix()
         # self.mainWindow = homeAdmin(self.id)
         self.mainWindow.show()
         self.close()
 
     def gauss(self):
+        self.getMatrix()
         # self.mainWindow = homeAdmin(self.id)
         self.mainWindow.show()
         self.close()
