@@ -1,26 +1,30 @@
 # USE PYQT and create a 3z2 grid of buttons
 import sys
-from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QGridLayout, QLabel
-from PyQt6.QtGui import QIcon
-from PyQt6.QtCore import pyqtSlot
+from PyQt6.QtCore import Qt, QSize
+from PyQt6.QtGui import QIcon, QFont, QPixmap, QPalette, QColor, QScreen
+from PyQt6.QtWidgets import *
 
 # create 6 buttons
-class App(QWidget):
+class Principal(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.title = 'PyQt6 grid layout'
-        self.left = 10
-        self.top = 10
-        self.width = 320
-        self.height = 200
+        self.setWindowTitle('Calculadora de matrices')
+        self.centerWindow() 
         self.initUI()
+        self.setCentralWidget(self.wid)
+    
+    def centerWindow(self):
+        qtRectangle = self.frameGeometry()
+        centerPoint = self.screen().availableGeometry().center()
+        qtRectangle.moveCenter(centerPoint)
+        self.move(qtRectangle.topLeft())
 
     def initUI(self):
-        self.setWindowTitle(self.title)
-        self.setGeometry(self.left, self.top, self.width, self.height)
-
+        self.wid = QWidget()
         # create grid layout
         grid = QGridLayout()
+
+        self.wid.setLayout(grid)
         # create labels
         label1 = QLabel('Button 1', self)
         label2 = QLabel('Button 2', self)
@@ -30,11 +34,11 @@ class App(QWidget):
         label6 = QLabel('Button 6', self)
         # add labels to grid
         grid.addWidget(label1, 0, 0)
-        grid.addWidget(label2, 0, 1)
+        grid.addWidget(label2, 0, 2)
         grid.addWidget(label3, 1, 0)
-        grid.addWidget(label4, 1, 1)
+        grid.addWidget(label4, 1, 2)
         grid.addWidget(label5, 2, 0)
-        grid.addWidget(label6, 2, 1)
+        grid.addWidget(label6, 2, 2)
         # create buttons
         button1 = QPushButton('Button 1', self)
         button2 = QPushButton('Button 2', self)
@@ -43,18 +47,15 @@ class App(QWidget):
         button5 = QPushButton('Button 5', self)
         button6 = QPushButton('Button 6', self)
         # add buttons to grid
-        grid.addWidget(button1, 0, 2)
+        grid.addWidget(button1, 0, 1)
         grid.addWidget(button2, 0, 3)
-        grid.addWidget(button3, 1, 2)
+        grid.addWidget(button3, 1, 1)
         grid.addWidget(button4, 1, 3)
-        grid.addWidget(button5, 2, 2)
+        grid.addWidget(button5, 2, 1)
         grid.addWidget(button6, 2, 3)
-        # set layout
-        self.setLayout(grid)
-        self.show()
 
 
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    ex = App()
-    sys.exit(app.exec())
+app = QApplication(sys.argv)
+window = Principal()
+window.show()
+app.exec()
