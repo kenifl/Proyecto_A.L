@@ -17,7 +17,7 @@ class Principal(QMainWindow):
         self.centerWindow() 
         self.initUI()
         self.setCentralWidget(self.wid)
-
+    
     def centerWindow(self):
         qtRectangle = self.frameGeometry()
         centerPoint = self.screen().availableGeometry().center()
@@ -31,6 +31,14 @@ class Principal(QMainWindow):
         horizontal2 = QHBoxLayout()
         box2 = QVBoxLayout()
         self.wid.setLayout(horizontal2)
+
+        self.rows = QLineEdit()
+        self.columns = QLineEdit()
+        self.genMatrix = QPushButton('Ingresar datos')
+        self.genMatrix.clicked.connect(self.generateTable)
+
+        self.tabla = QTableWidget()
+        self.tabla.setVisible(False)
 
         qhorizontal.addWidget(self.rows)
         qhorizontal.addWidget(QLabel('x'))
@@ -80,6 +88,7 @@ class Principal(QMainWindow):
             for j in range(self.tabla.columnCount()):
                 row.append(self.tabla.item(i, j).text())
             matrix.append(row)
+        print(matrix)
     
     def suma(self):
         self.getMatrix()
@@ -209,7 +218,7 @@ class Producto_escalar(QMainWindow):
         self.close()
 
 app = QApplication(sys.argv)
-window = Determinante()
+window = Principal()
 window.show()
 app.exec()
 
