@@ -16,7 +16,7 @@ def determinant(matrix):
     else:
         determinant_number = 0
         for i in range(len(matrix)):
-            determinant_number += matrix[0,i] * (-1)**(i+1) * determinant(slice_matrix(matrix,i))
+            determinant_number += matrix[0,i] * (-1)**(i+2) * determinant(slice_matrix(matrix,i))
     return determinant_number
 
 def slice_matrix(matrix,i):

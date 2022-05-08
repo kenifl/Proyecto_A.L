@@ -55,7 +55,7 @@ class Determinante(QMainWindow):
     
         self.wid.setLayout(b_grid)
 
-app = QApplication(sys.argv)
-window = Determinante()
-window.show()
-app.exec()
+# app = QApplication(sys.argv)
+# window = Determinante()
+# window.show()
+# app.exec()
