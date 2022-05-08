@@ -9,7 +9,7 @@ import numpy as np
 
 
 class Inverse_GUI(QMainWindow):
-    def __init__(self,matrix=np.array([[0,0,0],[0,0,0],[0,0,0]])):
+    def __init__(self,matrix=np.array([[5,4,5],[4,7,6],[5,3,1]])):
         super().__init__()
         self.matrix = matrix
         self.setWindowTitle('Inverse')
@@ -17,7 +17,8 @@ class Inverse_GUI(QMainWindow):
         self.setCentralWidget(self.wid)
     
     def create_layout(self):
-        if(type(inverse(self.matrix)) == list):
+        inverse_matrix = inverse(self.matrix)
+        if(True):
             self.wid = QWidget()
             grid_grandote = QGridLayout()
             self.matrix = np.array(self.matrix)
@@ -48,9 +49,13 @@ class Inverse_GUI(QMainWindow):
             layout_procedimiento.addLayout(grid_result)
 
             self.wid.setLayout(grid_grandote)
-        else:
+        #else:
             #self.wid = QWidget()
-            QMessageBox.warning(self, 'Error', inverse(self.matrix))
+            #QMessageBox.warning(self, 'Error', inverse(self.matrix))
+            #self.cerrar()
+
+    def cerrar(self):
+        self.close()
         
 #app = QApplication(sys.argv)
 #window = Inverse_GUI()

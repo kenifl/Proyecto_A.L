@@ -86,11 +86,13 @@ class Principal(QMainWindow):
         self.tabla.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
 
     def getMatrix(self):
+        matrix = []
         for i in range(self.tabla.rowCount()):
             row = []
             for j in range(self.tabla.columnCount()):
                 row.append(Fraction(self.tabla.item(i, j).text()))
             matrix.append(row)
+        #print(matrix)
         return matrix
     
     def suma(self):
@@ -114,15 +116,17 @@ class Principal(QMainWindow):
     def determinante(self):
         self.getMatrix()
         # self.mainWindow = homeAdmin(self.id)
-        self.mainWindow.show()
+        #self.mainWindow.show()
+        window_determinante =  Determinante()
+        window_determinante.show()
         self.close()
 
     def inversa(self):
         # self.mainWindow = homeAdmin(self.id)
+        #print(np.array(self.getMatrix()))
         self.VentanaInversa = Inverse_GUI(np.array(self.getMatrix()))
         self.VentanaInversa.show()
-        #print(self.getMatrix())
-        self.close()
+        #self.close()
 
     def transpuesta(self):
         self.getMatrix()
