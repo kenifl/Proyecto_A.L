@@ -53,9 +53,6 @@ class Inverse_GUI(QMainWindow):
             #self.wid = QWidget()
             #QMessageBox.warning(self, 'Error', inverse(self.matrix))
             #self.cerrar()
-
-    def cerrar(self):
-        self.close()
         
 #app = QApplication(sys.argv)
 #window = Inverse_GUI()
