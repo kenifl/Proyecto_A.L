@@ -5,6 +5,7 @@ from PyQt6.QtCore import Qt, QSize
 from PyQt6.QtGui import QIcon, QFont, QPixmap, QPalette, QColor, QScreen
 from PyQt6.QtWidgets import *
 from inverse_gui import Inverse_GUI
+from fractions import Fraction
 
 matrix = []
 filas = 0
@@ -87,7 +88,7 @@ class Principal(QMainWindow):
         for i in range(self.tabla.rowCount()):
             row = []
             for j in range(self.tabla.columnCount()):
-                row.append(self.tabla.item(i, j).text())
+                row.append(Fraction(self.tabla.item(i, j).text()))
             matrix.append(row)
         return matrix
     
