@@ -7,6 +7,7 @@ from Transpose_GUI import Transpose
 from determinant_gui import Determinante
 from inverse_gui import Inverse_GUI
 from fractions import Fraction
+from Producto_Matrices import ProductoM_GUI
 from gaussGui import GaussJordanUI
 import numpy as np
 
@@ -56,7 +57,7 @@ class Principal(QMainWindow):
         self.suma.clicked.connect(self.suma_matrices)
         self.suma.setEnabled(False)
         self.multiMatrices = QPushButton('Multiplicación de matrices')
-        self.multiMatrices.clicked.connect(self.multimatrices)
+        self.multiMatrices.clicked.connect(self.multimatrices_funcion)
         self.multiMatrices.setEnabled(False)
         self.escalar = QPushButton('Escalar de multiplicación')
         self.escalar.clicked.connect(self.escalar_funcion)
@@ -114,7 +115,7 @@ class Principal(QMainWindow):
         for i in range(self.tabla.rowCount()):
             row = []
             for j in range(self.tabla.columnCount()):
-                if(self.tabla.item(i, j) == None):
+                if(self.tabla.item(i, j) == None or self.tabla.item(i, j).text() == ''):
                     QMessageBox.warning(self, 'Error', 'No se puede ingresar una celda vacía')
                     return False
                 else:
@@ -128,11 +129,14 @@ class Principal(QMainWindow):
         self.mainWindow.show()
         self.close()
     
-    def multimatrices(self):
-        self.getMatrix()
-        # self.mainWindow = homeAdmin(self.id)
-        self.mainWindow.show()
-        self.close()
+    def multimatrices_funcion(self):
+        matrix = self.getMatrix()
+        if not matrix:
+            QMessageBox.warning(self, 'Error', 'No se puede ingresar una celda vacía')
+        else:
+            self.VentanaInversa = ProductoM_GUI(matrix)
+            self.VentanaInversa.show()
+        
 
     def escalar_funcion(self):
         self.getMatrix()
@@ -140,7 +144,7 @@ class Principal(QMainWindow):
         self.mainWindow.show()
         self.close()
 
-    def determinante(self):
+    def determinante_funcion(self):
         # self.mainWindow = homeAdmin(self.id)
         self.venatana_determinante=Determinante(self.getMatrix())
         self.venatana_determinante.show()
@@ -157,7 +161,7 @@ class Principal(QMainWindow):
             self.VentanaInversa.show()
         #self.close()
 
-    def transpuesta(self):
+    def transpuesta_funcion(self):
         # self.mainWindow = homeAdmin(self.id)
         self.ventana_transpose= Transpose(np.array(self.getMatrix()))
         self.venatana_determinante.show()
@@ -169,7 +173,7 @@ class Principal(QMainWindow):
         self.mainWindow.show()
         self.close()
 
-    def gauss(self):
+    def gauss_funcion(self):
         self.ventanaGauss = GaussJordanUI(self.getMatrix())
         self.ventanaGauss.show()
         # self.close()
