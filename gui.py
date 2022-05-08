@@ -1,4 +1,3 @@
-# USE PYQT and create a 3z2 grid of buttons
 import sys
 from PyQt6.QtCore import Qt, QSize
 from PyQt6.QtGui import QIcon, QFont, QPixmap, QPalette, QColor, QScreen
@@ -140,10 +139,10 @@ class Principal(QMainWindow):
         self.mainWindow.show()
         self.close()
 
-    def determinante(self):
+    def determinante_funcion(self):
         # self.mainWindow = homeAdmin(self.id)
-        self.venatana_determinante=Determinante(self.getMatrix())
-        self.venatana_determinante.show()
+        self.ventana_determinante=Determinante(self.getMatrix())
+        self.ventana_determinante.show()
         self.close()
 
     def inversa_funcion(self):
@@ -157,10 +156,10 @@ class Principal(QMainWindow):
             self.VentanaInversa.show()
         #self.close()
 
-    def transpuesta(self):
+    def transpuesta_funcion(self):
         # self.mainWindow = homeAdmin(self.id)
         self.ventana_transpose= Transpose(np.array(self.getMatrix()))
-        self.venatana_determinante.show()
+        self.ventana_transpose.show()
         # self.close()
 
     def adjunta_funcion(self):
@@ -169,12 +168,10 @@ class Principal(QMainWindow):
         self.mainWindow.show()
         self.close()
 
-    def gauss(self):
+    def gauss_funcion(self):
         self.ventanaGauss = GaussJordanUI(self.getMatrix())
         self.ventanaGauss.show()
         # self.close()
-
-
 
 app = QApplication(sys.argv)
 window = Principal()

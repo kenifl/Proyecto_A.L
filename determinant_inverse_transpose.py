@@ -17,11 +17,7 @@ def determinant(matrix):
         determinant_number = 0
         for i in range(len(matrix)):
             determinant_number += matrix[0,i] * (-1)**(i+2) * determinant(slice_matrix(matrix,i))
-<<<<<<< HEAD
     return Fraction(determinant_number)
-=======
-    return determinant_number
->>>>>>> 590e59527282ea3356ea5a701f0795b851fcb1e1
 
 def slice_matrix(matrix,i):
     new_matrix=[]
