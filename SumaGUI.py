@@ -10,7 +10,7 @@ class Add(QMainWindow):
         if matrix is None:
             matrix = [[5, 4, 5], [4, 7, 6], [5, 3, 1]]
         self.matrix = matrix
-        self.setWindowTitle('Matrix multiplication')
+        self.setWindowTitle('Matrix Addition')
         self.create_layout()
         self.setCentralWidget(self.wid)
 
@@ -64,7 +64,7 @@ class Add(QMainWindow):
             row = []
             for j in range(self.tabla.columnCount()):
                 if self.tabla.item(i, j) is None or self.tabla.item(i, j).text() == '':
-                    QMessageBox.warning(self, 'Error', 'No se puede ingresar una celda vacía')
+                    QMessageBox.warning(self, 'Error', 'Fill all cells')
                     return False
                 else:
                     row.append(Fraction(self.tabla.item(i, j).text()))
@@ -75,7 +75,7 @@ class Add(QMainWindow):
         matrix_2 = self.get_matrix()
         self.labels['resultado'].setText('')
         if not matrix_2:
-            self.labels['resultado'].setText('Error, no se puede realizar la operación')
+            self.labels['resultado'].setText('Error, operation can´t be done')
         else:
             result = suma_matriz(self.matrix, matrix_2)
             for i in range(len(result)):
