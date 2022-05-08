@@ -165,8 +165,13 @@ class Determinante(QMainWindow):
         grid.addWidget(button_2, 1, 3)
 
     def regresar (self):
-        window.show()
+        self.mainWindow = Principal(self.id)
+        self.mainWindow.show()
         self.close()
+
+    def calcular(self):
+        self.mainWindow= 
+        self.mainWindow.show()
 
         
 class Producto_escalar(QMainWindow):
