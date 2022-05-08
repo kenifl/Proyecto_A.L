@@ -1,3 +1,4 @@
+from fractions import Fraction
 import numpy as np
 
 def transpose(matrix):
@@ -50,8 +51,21 @@ def adjugate(matrix):
 
     
 def inverse(matrix):
-    inverse_matrix = adjugate(matrix)/determinant(matrix)
-    return inverse_matrix
+    determinante = determinant(matrix)
+    if determinante != 0:
+        inverse_matrix = []
+        adjugate_matrix = np.copy(adjugate(matrix))
+        for i in range(matrix.shape[0]):
+            row = []
+            for j in range(matrix.shape[1]):
+                row.append(Fraction(adjugate_matrix[i,j])/Fraction(determinante))
+            inverse_matrix.append(row)
 
-#matrix = np.array([[1,0,3],[3,6,6],[6,0,9]])
+        return inverse_matrix
+    else:
+        return "Error, determinant is 0"
+    
+
+#matrix = np.array([[5,4,5],[4,7,6],[5,3,1]])
+#matrix = np.array([[0,0,0],[0,0,0],[0,0,0]])
 #print(inverse(matrix))
