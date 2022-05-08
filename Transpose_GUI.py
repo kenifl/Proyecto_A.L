@@ -36,7 +36,7 @@ class Transpose(QMainWindow):
             for i in range(len(self.matrix)):
                 for j in range(len(self.matrix[i])):
                     label = QLabel(str(self.matrix[i][j]))
-                    grid.addWidget(label, i, j)
+                    grid.addWidget(label, j, i)
             transpose_matrix = transpose(self.matrix)
             layout_matriz_entrada.addLayout(grid)
         
