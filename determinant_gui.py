@@ -12,7 +12,7 @@ class Determinante(QMainWindow):
         super().__init__()
         self.setWindowTitle('Determinante de una matriz')
         self.centerWindow() 
-        self.initUI()
+        self.create_layout()
         self.setCentralWidget(self.wid)
 
     def centerWindow(self):
