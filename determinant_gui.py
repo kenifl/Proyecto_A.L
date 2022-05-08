@@ -50,10 +50,14 @@ class Determinante(QMainWindow):
 
 
         # add labels to grid
-        grid.addWidget(label_1, 0, 0)
+        grid.addWidget(label_1, -1, 0)
+        grid.addWidget(label_2, 0, 3)
 
     
         self.wid.setLayout(b_grid)
+        
+def cerrar(self):
+    self.close()
 
 # app = QApplication(sys.argv)
 # window = Determinante()

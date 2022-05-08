@@ -4,20 +4,20 @@ from PyQt6.QtCore import Qt, QSize
 from PyQt6.QtGui import QIcon, QFont, QPixmap, QPalette, QColor, QScreen
 from PyQt6.QtWidgets import *
 from fractions import Fraction
-from determinant_inverse_transpose import transpose 
+from determinant_inverse_transpose import adjugate 
 import numpy as np
 
 
-class Transpose(QMainWindow):
+class Adjugate(QMainWindow):
     def __init__(self,matrix=np.array([[5,4,5],[4,7,6],[5,3,1]])):
         super().__init__()
         self.matrix = matrix
-        self.setWindowTitle('Transpose')
+        self.setWindowTitle('Adjugate')
         self.create_layout()
         self.setCentralWidget(self.wid)
     
     def create_layout(self):
-        transpose_matrix = transpose(self.matrix)
+        adjugate_matrix = adjugate(self.matrix)
         if(True):
             self.wid = QWidget()
             grid_grandote = QGridLayout()
@@ -37,14 +37,14 @@ class Transpose(QMainWindow):
                 for j in range(len(self.matrix[i])):
                     label = QLabel(str(self.matrix[i][j]))
                     grid.addWidget(label, j, i)
-            transpose_matrix = transpose(self.matrix)
+            adjugate_matrix = adjugate(self.matrix)
             layout_matriz_entrada.addLayout(grid)
         
-            label_transpuesta = QLabel('Matriz Transpuesta:')
-            layout_procedimiento.addWidget(label_transpuesta)
-            for j in range(len(transpose_matrix)):
-                for i in range(len(transpose_matrix[j])):
-                    label = QLabel(str(transpose_matrix[j][i]))
+            label_adjugate = QLabel('Matriz Adjunta:')
+            layout_procedimiento.addWidget(label_adjugate)
+            for j in range(len(adjugate_matrix)):
+                for i in range(len(adjugate_matrix[j])):
+                    label = QLabel(str(adjugate_matrix[j][i]))
                     grid_result.addWidget(label, i, j)
             layout_procedimiento.addLayout(grid_result)
 
@@ -54,9 +54,6 @@ def cerrar(self):
     self.close()
         
 # app = QApplication(sys.argv)
-# window = Transpose()
+# window = Adjugate()
 # window.show()
 # app.exec()
-
-
-

@@ -40,7 +40,7 @@ class Inverse_GUI(QMainWindow):
             inverse_matrix = inverse(self.matrix)
             layout_matriz_entrada.addLayout(grid)
         
-            label_inverse = QLabel('Inverse matrix:')
+            label_inverse = QLabel('Matriz inversa:')
             layout_procedimiento.addWidget(label_inverse)
             for j in range(len(inverse_matrix)):
                 for i in range(len(inverse_matrix[j])):
