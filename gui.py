@@ -4,7 +4,7 @@ import sys
 from PyQt6.QtCore import Qt, QSize
 from PyQt6.QtGui import QIcon, QFont, QPixmap, QPalette, QColor, QScreen
 from PyQt6.QtWidgets import *
-from determinan_gui import Determinante
+from determinant_gui import Determinante
 from inverse_gui import Inverse_GUI
 from fractions import Fraction
 import numpy as np
