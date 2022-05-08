@@ -113,9 +113,9 @@ class Principal(QMainWindow):
         self.close()
 
     def determinante(self):
-        self.getMatrix()
         # self.mainWindow = homeAdmin(self.id)
-        self.mainWindow.show()
+        self.venatana_determinante=Determinante(self.getMatrix())
+        self.venatana_determinante.show()
         self.close()
 
     def inversa(self):

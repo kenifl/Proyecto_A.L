@@ -8,8 +8,9 @@ import numpy as np
 
 
 class Determinante(QMainWindow):
-    def __init__(self):
+    def __init__(self, matriz=[[1,1,3],[4,8,6],[7,8,9]]):
         super().__init__()
+        self.matriz= np.array(matriz)
         self.setWindowTitle('Determinante de una matriz')
         self.centerWindow() 
         self.create_layout()
@@ -34,25 +35,27 @@ class Determinante(QMainWindow):
         # create labels
         label_1=QLabel("Matriz")
         layout_matriz_entrada.addWidget(label_1)
-        determinante= determinant()
+        for i in range(len(self.matriz)):
+            for j in range(len(self.matriz[i])):
+                label = QLabel(str(self.matriz[i][j]))
+                grid.addWidget(label, i, j)
+        determinante= determinant(self.matriz)
         layout_matriz_entrada.addLayout(grid)
 
         label_2= QLabel('|A|=', self)
         layout_procedimiento.addWidget(label_2)
-        for j in range(len(determinante)):
-            for i in range (len(determinante[j])):
-                label=QLabel(str(determinante[j][i]))
-                r_grid.addWidget(label, i, j)
-        layout_procedimiento.addLayout(r_grid)
+
+        label_det=QLabel(str(determinante))
+        layout_procedimiento.addWidget(label_det)
 
 
         # add labels to grid
         grid.addWidget(label_1, 0, 0)
 
-        # create buttons
-        button_1 = QPushButton('Calcular', self)
-
-        # add buttons to grid
-        grid.addWidget(button_1, 1, 1)
     
         self.wid.setLayout(b_grid)
+
+app = QApplication(sys.argv)
+window = Determinante()
+window.show()
+app.exec()
