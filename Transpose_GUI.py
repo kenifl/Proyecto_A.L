@@ -31,7 +31,7 @@ class Transpose(QMainWindow):
             grid_grandote.addLayout(layout_procedimiento, 0, 1)
         
             # create labels
-            label1 = QLabel('Matriz de entrada')
+            label1 = QLabel('Matriz de entrada:')
             layout_matriz_entrada.addWidget(label1)
             for i in range(len(self.matrix)):
                 for j in range(len(self.matrix[i])):
@@ -50,13 +50,13 @@ class Transpose(QMainWindow):
 
             self.wid.setLayout(grid_grandote)
 
-    def cerrar(self):
-        self.close()
+def cerrar(self):
+    self.close()
         
-#app = QApplication(sys.argv)
-#window = Transpose()
-#window.show()
-#app.exec()
+app = QApplication(sys.argv)
+window = Transpose()
+window.show()
+app.exec()
 
 
 

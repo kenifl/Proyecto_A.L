@@ -5,6 +5,7 @@ import sys
 from PyQt6.QtCore import Qt, QSize
 from PyQt6.QtGui import QIcon, QFont, QPixmap, QPalette, QColor, QScreen
 from PyQt6.QtWidgets import *
+from Transpose_GUI import Transpose
 from determinant_gui import Determinante
 from inverse_gui import Inverse_GUI
 import numpy as np
@@ -128,10 +129,10 @@ class Principal(QMainWindow):
         #self.close()
 
     def transpuesta(self):
-        self.getMatrix()
         # self.mainWindow = homeAdmin(self.id)
-        self.mainWindow.show()
-        self.close()
+        self.ventana_transpose= Transpose(np.array(self.getMatrix()))
+        self.venatana_determinante.show()
+        # self.close()
 
     def adjunta(self):
         self.getMatrix()
