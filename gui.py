@@ -1,4 +1,3 @@
-# USE PYQT and create a 3z2 grid of buttons
 import sys
 from PyQt6.QtCore import Qt, QSize
 from PyQt6.QtGui import QIcon, QFont, QPixmap, QPalette, QColor, QScreen
@@ -17,7 +16,7 @@ columnas = 0
 class Principal(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle('Calculadora de matrices')
+        self.setWindowTitle('Matrix Calculator')
         self.setFixedSize(1280, 720)
         self.centerWindow() 
         self.initUI()
@@ -39,7 +38,7 @@ class Principal(QMainWindow):
 
         self.rows = QLineEdit()
         self.columns = QLineEdit()
-        self.genMatrix = QPushButton('Ingresar datos')
+        self.genMatrix = QPushButton('Input data')
         self.genMatrix.clicked.connect(self.generateTable)
 
         self.tabla = QTableWidget()
@@ -53,25 +52,25 @@ class Principal(QMainWindow):
         box.addWidget(self.tabla)
 
         horizontal2.addLayout(box)
-        self.suma = QPushButton('Suma')
+        self.suma = QPushButton('Addition')
         self.suma.clicked.connect(self.suma_matrices)
         self.suma.setEnabled(False)
         self.multiMatrices = QPushButton('Multiplicación de matrices')
         self.multiMatrices.clicked.connect(self.multimatrices_funcion)
         self.multiMatrices.setEnabled(False)
-        self.escalar = QPushButton('Escalar de multiplicación')
+        self.escalar = QPushButton('Scalar multiplication')
         self.escalar.clicked.connect(self.escalar_funcion)
         self.escalar.setEnabled(False)
-        self.determinante = QPushButton('Determinante')
+        self.determinante = QPushButton('Determinant')
         self.determinante.clicked.connect(self.determinante_funcion)
         self.determinante.setEnabled(False)
-        self.inversa = QPushButton('Inversa')
+        self.inversa = QPushButton('Inverse')
         self.inversa.clicked.connect(self.inversa_funcion)
         self.inversa.setEnabled(False)
-        self.transpuesta = QPushButton('Transpuesta')
+        self.transpuesta = QPushButton('Transpose')
         self.transpuesta.clicked.connect(self.transpuesta_funcion)
         self.transpuesta.setEnabled(False)
-        self.adjunta = QPushButton('Adjunta')
+        self.adjunta = QPushButton('Adjugate')
         self.adjunta.clicked.connect(self.adjunta_funcion)
         self.adjunta.setEnabled(False)
         self.guass = QPushButton('Gauss-Jordan')
@@ -115,8 +114,8 @@ class Principal(QMainWindow):
         for i in range(self.tabla.rowCount()):
             row = []
             for j in range(self.tabla.columnCount()):
-                if(self.tabla.item(i, j) == None or self.tabla.item(i, j).text() == ''):
-                    QMessageBox.warning(self, 'Error', 'No se puede ingresar una celda vacía')
+                if(self.tabla.item(i, j) == None):
+                    QMessageBox.warning(self, 'Error', 'Fill all cells')
                     return False
                 else:
                     row.append(Fraction(self.tabla.item(i, j).text()))
@@ -132,7 +131,7 @@ class Principal(QMainWindow):
     def multimatrices_funcion(self):
         matrix = self.getMatrix()
         if not matrix:
-            QMessageBox.warning(self, 'Error', 'No se puede ingresar una celda vacía')
+            QMessageBox.warning(self, 'Error', 'Fill all cells')
         else:
             self.VentanaInversa = ProductoM_GUI(matrix)
             self.VentanaInversa.show()
@@ -146,8 +145,8 @@ class Principal(QMainWindow):
 
     def determinante_funcion(self):
         # self.mainWindow = homeAdmin(self.id)
-        self.venatana_determinante=Determinante(self.getMatrix())
-        self.venatana_determinante.show()
+        self.ventana_determinante=Determinante(self.getMatrix())
+        self.ventana_determinante.show()
         self.close()
 
     def inversa_funcion(self):
@@ -155,7 +154,7 @@ class Principal(QMainWindow):
         #print(np.array(self.getMatrix()))
         matrix = self.getMatrix()
         if not matrix:
-            QMessageBox.warning(self, 'Error', 'No se puede ingresar una celda vacía')
+            QMessageBox.warning(self, 'Error', 'Fill all cells')
         else:
             self.VentanaInversa = Inverse_GUI(np.array(matrix))
             self.VentanaInversa.show()
@@ -164,7 +163,7 @@ class Principal(QMainWindow):
     def transpuesta_funcion(self):
         # self.mainWindow = homeAdmin(self.id)
         self.ventana_transpose= Transpose(np.array(self.getMatrix()))
-        self.venatana_determinante.show()
+        self.ventana_transpose.show()
         # self.close()
 
     def adjunta_funcion(self):
@@ -177,8 +176,6 @@ class Principal(QMainWindow):
         self.ventanaGauss = GaussJordanUI(self.getMatrix())
         self.ventanaGauss.show()
         # self.close()
-
-
 
 app = QApplication(sys.argv)
 window = Principal()

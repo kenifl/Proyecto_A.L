@@ -11,7 +11,7 @@ class Determinante(QMainWindow):
     def __init__(self, matriz=[[1,1,3],[4,8,6],[7,8,9]]):
         super().__init__()
         self.matriz= np.array(matriz)
-        self.setWindowTitle('Determinante de una matriz')
+        self.setWindowTitle('Determinant')
         self.centerWindow() 
         self.create_layout()
         self.setCentralWidget(self.wid)
@@ -33,7 +33,7 @@ class Determinante(QMainWindow):
         b_grid.addLayout(layout_procedimiento,0,1)
 
         # create labels
-        label_1=QLabel("Matriz")
+        label_1=QLabel("Matrix")
         layout_matriz_entrada.addWidget(label_1)
         for i in range(len(self.matriz)):
             for j in range(len(self.matriz[i])):

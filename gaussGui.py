@@ -23,7 +23,7 @@ class GaussJordanUI(QMainWindow):
         self.tabla.setRowCount(len(self.matrix))
         self.tabla.setColumnCount(len(self.matrix[0])+1)
         self.tabla.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
-        boton = QPushButton('Calcular')
+        boton = QPushButton('Calculate')
         boton.clicked.connect(self.calcular)
         self.tablaRes = QTableWidget()
         self.tablaRes.setRowCount(len(self.matrix))
@@ -42,8 +42,9 @@ class GaussJordanUI(QMainWindow):
                 else:
                     self.tabla.setItem(i, j, QTableWidgetItem(str(self.matrix[i][j])))
         qhorizontal.addWidget(self.tabla)
-        qhorizontal.addWidget(QLabel('Resultado:'))
+        qhorizontal.addWidget(QLabel('Result:'))
         qhorizontal.addWidget(self.tablaRes)
+        box.addWidget(QLabel('Complete the augmented matrix:'))
         box.addLayout(qhorizontal)
         box.addWidget(boton)
     
@@ -52,6 +53,9 @@ class GaussJordanUI(QMainWindow):
         for i in range(self.tabla.rowCount()):
             row = []
             for j in range(self.tabla.columnCount()):
+                if(self.tabla.item(i, j).text() == ''):
+                    QMessageBox.warning(self, 'Error', 'Fill all cells')
+                    return False
                 row.append(Fraction(self.tabla.item(i, j).text()))
             temp.append(row)
         print(temp)
@@ -59,3 +63,5 @@ class GaussJordanUI(QMainWindow):
         for i in range(len(res)):
             for j in range(len(res[0])):
                 self.tablaRes.setItem(i,j,QTableWidgetItem(str(res[i][j])))
+                if j == len(res[0])-1:
+                    self.tablaRes.item(i,j).setBackground(QColor(255,255,0))
