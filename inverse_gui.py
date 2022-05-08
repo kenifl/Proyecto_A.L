@@ -45,7 +45,7 @@ class Inverse_GUI(QMainWindow):
             for j in range(len(inverse_matrix)):
                 for i in range(len(inverse_matrix[j])):
                     label = QLabel(str(inverse_matrix[j][i]))
-                    grid_result.addWidget(label, i, j)
+                    grid_result.addWidget(label, j, i)
             layout_procedimiento.addLayout(grid_result)
 
             self.wid.setLayout(grid_grandote)

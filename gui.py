@@ -9,7 +9,6 @@ from determinat_gui import Determinante
 from inverse_gui import Inverse_GUI
 import numpy as np
 
-matrix = []
 filas = 0
 columnas = 0
 
