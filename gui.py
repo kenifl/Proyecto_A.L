@@ -4,6 +4,7 @@ import sys
 from PyQt6.QtCore import Qt, QSize
 from PyQt6.QtGui import QIcon, QFont, QPixmap, QPalette, QColor, QScreen
 from PyQt6.QtWidgets import *
+from inverse_gui import Inverse_GUI
 
 matrix = []
 filas = 0
@@ -88,7 +89,7 @@ class Principal(QMainWindow):
             for j in range(self.tabla.columnCount()):
                 row.append(self.tabla.item(i, j).text())
             matrix.append(row)
-        print(matrix)
+        return matrix
     
     def suma(self):
         self.getMatrix()
@@ -115,9 +116,9 @@ class Principal(QMainWindow):
         self.close()
 
     def inversa(self):
-        self.getMatrix()
         # self.mainWindow = homeAdmin(self.id)
-        self.mainWindow.show()
+        self.VentanaInversa = Inverse_GUI(self.getMatrix())
+        self.VentanaInversa.show()
         self.close()
 
     def transpuesta(self):

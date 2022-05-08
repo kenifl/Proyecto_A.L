@@ -4,20 +4,22 @@ from PyQt6.QtCore import Qt, QSize
 from PyQt6.QtGui import QIcon, QFont, QPixmap, QPalette, QColor, QScreen
 from PyQt6.QtWidgets import *
 from fractions import Fraction
-from determinant_inverse_transpose import *
+from determinant_inverse_transpose import inverse
+import numpy as np
 
 
 class Inverse_GUI(QMainWindow):
-    def __init__(self):
+    def __init__(self,matrix=[[1,1,3],[4,8,6],[7,8,9]]):
         super().__init__()
+        self.matrix = matrix
         self.setWindowTitle('Inverse')
         self.create_layout()
         self.setCentralWidget(self.wid)
     
-    def create_layout(self, matrix=[[1,1,3],[4,8,6],[7,8,9]]):
+    def create_layout(self):
         self.wid = QWidget()
         grid_grandote = QGridLayout()
-        self.matrix = np.array(matrix)
+        self.matrix = np.array(self.matrix)
         # create grid layout
         grid = QGridLayout()
         grid_result = QGridLayout()
@@ -29,9 +31,9 @@ class Inverse_GUI(QMainWindow):
         # create labels
         label1 = QLabel('Matriz de entrada')
         layout_matriz_entrada.addWidget(label1)
-        for i in range(len(matrix)):
-            for j in range(len(matrix[i])):
-                label = QLabel(str(matrix[i][j]))
+        for i in range(len(self.matrix)):
+            for j in range(len(self.matrix[i])):
+                label = QLabel(str(self.matrix[i][j]))
                 grid.addWidget(label, i, j)
         inverse_matrix = inverse(self.matrix)
         layout_matriz_entrada.addLayout(grid)
@@ -48,10 +50,10 @@ class Inverse_GUI(QMainWindow):
         
         self.wid.setLayout(grid_grandote)
         
-app = QApplication(sys.argv)
-window = Inverse_GUI()
-window.show()
-app.exec()
+#app = QApplication(sys.argv)
+#window = Inverse_GUI()
+#window.show()
+#app.exec()
 
 
 
