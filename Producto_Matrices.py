@@ -11,7 +11,7 @@ class ProductoM_GUI(QMainWindow):
     def __init__(self,matrix=np.array([[5,4,5],[4,7,6],[5,3,1]])):
         super().__init__()
         self.matrix = matrix
-        self.setWindowTitle('Producto Matrices')
+        self.setWindowTitle('Matrix multiplication')
         self.create_layout()
         self.setCentralWidget(self.wid)
     
@@ -33,11 +33,11 @@ class ProductoM_GUI(QMainWindow):
             grid_grandote.addLayout(layout_resultado, 0, 2)
             grid_grandote.addLayout(layout_procedimiento, 0, 3)
             #procedimiento
-            label_procedimiento = QLabel('Número de columnas:')
+            label_procedimiento = QLabel('Number of columns:')
             layout_line_button.addWidget(label_procedimiento)
             self.num_columnas = QLineEdit()
             layout_line_button.addWidget(self.num_columnas)
-            self.boton_procedimiento = QPushButton('Actualizar')
+            self.boton_procedimiento = QPushButton('Update')
             layout_line_button.addWidget(self.boton_procedimiento)
             layout_procedimiento.addWidget(self.boton_procedimiento)
             self.tabla = QTableWidget()
