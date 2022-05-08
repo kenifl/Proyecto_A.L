@@ -17,7 +17,7 @@ class Transpose(QMainWindow):
         self.setCentralWidget(self.wid)
     
     def create_layout(self):
-        inverse_matrix = transpose(self.matrix)
+        transpose_matrix = transpose(self.matrix)
         if(True):
             self.wid = QWidget()
             grid_grandote = QGridLayout()
@@ -49,10 +49,6 @@ class Transpose(QMainWindow):
             layout_procedimiento.addLayout(grid_result)
 
             self.wid.setLayout(grid_grandote)
-        #else:
-            #self.wid = QWidget()
-            #QMessageBox.warning(self, 'Error', inverse(self.matrix))
-            #self.cerrar()
 
     def cerrar(self):
         self.close()
