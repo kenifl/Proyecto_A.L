@@ -3,9 +3,12 @@ import sys
 from PyQt6.QtCore import Qt, QSize
 from PyQt6.QtGui import QIcon, QFont, QPixmap, QPalette, QColor, QScreen
 from PyQt6.QtWidgets import *
+from Transpose_GUI import Transpose
+from determinant_gui import Determinante
 from inverse_gui import Inverse_GUI
 from fractions import Fraction
 from gaussGui import GaussJordanUI
+import numpy as np
 
 matrix = []
 filas = 0
@@ -85,11 +88,13 @@ class Principal(QMainWindow):
         self.tabla.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
 
     def getMatrix(self):
+        matrix = []
         for i in range(self.tabla.rowCount()):
             row = []
             for j in range(self.tabla.columnCount()):
                 row.append(Fraction(self.tabla.item(i, j).text()))
             matrix.append(row)
+        #print(matrix)
         return matrix
     
     def suma(self):
@@ -111,22 +116,23 @@ class Principal(QMainWindow):
         self.close()
 
     def determinante(self):
-        self.getMatrix()
         # self.mainWindow = homeAdmin(self.id)
-        self.mainWindow.show()
+        self.venatana_determinante=Determinante(self.getMatrix())
+        self.venatana_determinante.show()
         self.close()
 
     def inversa(self):
         # self.mainWindow = homeAdmin(self.id)
-        self.VentanaInversa = Inverse_GUI(self.getMatrix())
+        #print(np.array(self.getMatrix()))
+        self.VentanaInversa = Inverse_GUI(np.array(self.getMatrix()))
         self.VentanaInversa.show()
-        self.close()
+        #self.close()
 
     def transpuesta(self):
-        self.getMatrix()
         # self.mainWindow = homeAdmin(self.id)
-        self.mainWindow.show()
-        self.close()
+        self.ventana_transpose= Transpose(np.array(self.getMatrix()))
+        self.venatana_determinante.show()
+        # self.close()
 
     def adjunta(self):
         self.getMatrix()
@@ -139,84 +145,7 @@ class Principal(QMainWindow):
         self.ventanaGauss.show()
         # self.close()
 
-class Determinante(QMainWindow):
-    def __init__(self):
-        super().__init__()
-        self.setWindowTitle('Determinante de una matriz')
-        self.centerWindow() 
-        self.initUI()
-        self.setCentralWidget(self.wid)
 
-    def centerWindow(self):
-        qtRectangle = self.frameGeometry()
-        centerPoint = self.screen().availableGeometry().center()
-        qtRectangle.moveCenter(centerPoint)
-        self.move(qtRectangle.topLeft())
-
-    def initUI(self):
-        self.wid = QWidget()
-        # create grid layout
-        grid = QGridLayout()
-
-        self.wid.setLayout(grid)
-        # create labels
-        label_1 = QLabel('|A|=', self)
-
-        # add labels to grid
-        grid.addWidget(label_1, 0, 0)
-
-        # create buttons
-        button_1 = QPushButton('Calcular', self)
-        button_2 = QPushButton('Regresar', self)
-        button_2.clicked.connect(self.regresar)
-
-        # add buttons to grid
-        grid.addWidget(button_1, 1, 1)
-        grid.addWidget(button_2, 1, 3)
-
-    def regresar (self):
-        window.show()
-        self.close()
-
-        
-class Producto_escalar(QMainWindow):
-    def __init__(self):
-        super().__init__()
-        self.setWindowTitle('Determinante de una matriz')
-        self.centerWindow() 
-        self.initUI()
-        self.setCentralWidget(self.wid)
-
-    def centerWindow(self):
-        qtRectangle = self.frameGeometry()
-        centerPoint = self.screen().availableGeometry().center()
-        qtRectangle.moveCenter(centerPoint)
-        self.move(qtRectangle.topLeft())
-
-    def initUI(self):
-        self.wid = QWidget()
-        # create grid layout
-        grid = QGridLayout()
-
-        self.wid.setLayout(grid)
-        # create labels
-        label_1 = QLabel('|A|=', self)
-
-        # add labels to grid
-        grid.addWidget(label_1, 0, 0)
-
-        # create buttons
-        button_1 = QPushButton('Calcular', self)
-        button_2 = QPushButton('Regresar', self)
-        button_2.clicked.connect(self.regresar)
-
-        # add buttons to grid
-        grid.addWidget(button_1, 1, 1)
-        grid.addWidget(button_2, 1, 3)
-
-    def regresar (self):
-        window.show()
-        self.close()
 
 app = QApplication(sys.argv)
 window = Principal()
