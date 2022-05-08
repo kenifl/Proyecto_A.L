@@ -1,3 +1,4 @@
+from fractions import Fraction
 import numpy as np
 
 def transpose(matrix):
@@ -16,7 +17,7 @@ def determinant(matrix):
         determinant_number = 0
         for i in range(len(matrix)):
             determinant_number += matrix[0,i] * (-1)**(i+1) * determinant(slice_matrix(matrix,i))
-    return determinant_number
+    return Fraction(determinant_number)
 
 def slice_matrix(matrix,i):
     new_matrix=[]
@@ -50,8 +51,18 @@ def adjugate(matrix):
 
     
 def inverse(matrix):
-    inverse_matrix = adjugate(matrix)/determinant(matrix)
+    inverse_matrix = []
+    adjugate_matrix = np.copy(adjugate(matrix))
+    if determinant(matrix) != 0:
+        for i in range(matrix.shape[0]):
+            row = []
+            for j in range(matrix.shape[1]):
+                row.append(adjugate_matrix[i,j]/determinant(matrix))
+            inverse_matrix.append(row)
+    else:
+        return 'The determinant is 0, so the inverse matrix is not defined'
     return inverse_matrix
 
 #matrix = np.array([[1,0,3],[3,6,6],[6,0,9]])
+#matrix = np.array([[0,0,0],[0,0,0],[0,0,0]])
 #print(inverse(matrix))

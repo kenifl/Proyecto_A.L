@@ -1,10 +1,12 @@
 # USE PYQT and create a 3z2 grid of buttons
+from fractions import Fraction
 from importlib.metadata import FileHash
 import sys
 from PyQt6.QtCore import Qt, QSize
 from PyQt6.QtGui import QIcon, QFont, QPixmap, QPalette, QColor, QScreen
 from PyQt6.QtWidgets import *
 from inverse_gui import Inverse_GUI
+import numpy as np
 
 matrix = []
 filas = 0
@@ -87,7 +89,7 @@ class Principal(QMainWindow):
         for i in range(self.tabla.rowCount()):
             row = []
             for j in range(self.tabla.columnCount()):
-                row.append(self.tabla.item(i, j).text())
+                row.append(Fraction(self.tabla.item(i, j).text()))
             matrix.append(row)
         return matrix
     
@@ -117,8 +119,9 @@ class Principal(QMainWindow):
 
     def inversa(self):
         # self.mainWindow = homeAdmin(self.id)
-        self.VentanaInversa = Inverse_GUI(self.getMatrix())
+        self.VentanaInversa = Inverse_GUI(np.array(self.getMatrix()))
         self.VentanaInversa.show()
+        #print(self.getMatrix())
         self.close()
 
     def transpuesta(self):
