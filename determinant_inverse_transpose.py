@@ -17,7 +17,7 @@ def determinant(matrix):
         determinant_number = 0
         for i in range(len(matrix)):
             determinant_number += matrix[0,i] * (-1)**(i+2) * determinant(slice_matrix(matrix,i))
-    return determinant_number
+    return Fraction(determinant_number)
 
 def slice_matrix(matrix,i):
     new_matrix=[]
@@ -58,7 +58,7 @@ def inverse(matrix):
         for i in range(matrix.shape[0]):
             row = []
             for j in range(matrix.shape[1]):
-                row.append(Fraction(adjugate_matrix[i,j])/Fraction(determinante))
+                row.append(Fraction(adjugate_matrix[i,j])/-determinante)
             inverse_matrix.append(row)
 
         return inverse_matrix
@@ -68,4 +68,5 @@ def inverse(matrix):
 
 #matrix = np.array([[5,4,5],[4,7,6],[5,3,1]])
 #matrix = np.array([[0,0,0],[0,0,0],[0,0,0]])
+#matrix = np.array([[6,9],[5,9]])
 #print(inverse(matrix))
