@@ -13,8 +13,9 @@ filas = 0
 columnas = 0
 
 class Principal(QMainWindow):
-    def __init__(self):
+    def __init__(self, id):
         super().__init__()
+        self.id = id
         self.setWindowTitle('Matrix Calculator')
         self.setFixedSize(1280, 720)
         self.centerWindow() 
@@ -173,8 +174,8 @@ class Principal(QMainWindow):
         self.ventanaGauss.show()
         # self.close()
 
-app = QApplication(sys.argv)
-window = Principal()
-window.show()
-app.exec()
+# app = QApplication(sys.argv)
+# window = Principal()
+# window.show()
+# app.exec()
 
