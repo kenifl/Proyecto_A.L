@@ -1,27 +1,29 @@
 import sys
-from PyQt6.QtCore import Qt, QSize
-from PyQt6.QtGui import QIcon, QFont, QPixmap, QPalette, QColor, QScreen
 from PyQt6.QtWidgets import *
+
+from SumaGUI import Add
 from Transpose_GUI import Transpose
 from determinant_gui import Determinante
 from inverse_gui import Inverse_GUI
 from fractions import Fraction
 from Producto_Matrices import ProductoM_GUI
+from suma_matriz import suma_matriz
 from gaussGui import GaussJordanUI
 import numpy as np
 
 filas = 0
 columnas = 0
 
+
 class Principal(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle('Matrix Calculator')
         self.setFixedSize(1280, 720)
-        self.centerWindow() 
+        self.centerWindow()
         self.initUI()
         self.setCentralWidget(self.wid)
-    
+
     def centerWindow(self):
         qtRectangle = self.frameGeometry()
         centerPoint = self.screen().availableGeometry().center()
@@ -85,7 +87,7 @@ class Principal(QMainWindow):
         box2.addWidget(self.adjunta)
         box2.addWidget(self.guass)
         horizontal2.addLayout(box2)
-    
+
     def generateTable(self):
         filas = int(self.rows.text())
         columnas = int(self.columns.text())
@@ -93,7 +95,7 @@ class Principal(QMainWindow):
         self.tabla.setRowCount(filas)
         self.tabla.setColumnCount(columnas)
         self.tabla.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
-        if(filas == columnas):
+        if (filas == columnas):
             self.determinante.setEnabled(True)
             self.inversa.setEnabled(True)
             self.adjunta.setEnabled(True)
@@ -107,27 +109,27 @@ class Principal(QMainWindow):
         self.guass.setEnabled(True)
         self.transpuesta.setEnabled(True)
 
-            
-
     def getMatrix(self):
         matrix = []
         for i in range(self.tabla.rowCount()):
             row = []
             for j in range(self.tabla.columnCount()):
-                if(self.tabla.item(i, j) == None):
+                if (self.tabla.item(i, j) == None):
                     QMessageBox.warning(self, 'Error', 'Fill all cells')
                     return False
                 else:
                     row.append(Fraction(self.tabla.item(i, j).text()))
             matrix.append(row)
         return matrix
-    
+
     def suma_matrices(self):
-        self.getMatrix()
-        # self.mainWindow = homeAdmin(self.id)
-        self.mainWindow.show()
-        self.close()
-    
+        matrix = self.getMatrix()
+        if not matrix:
+            QMessageBox.warning(self, 'Error', 'Fill all cells')
+        else:
+            self.VentanaAdd = Add(np.array(matrix))
+            self.VentanaAdd.show()
+
     def multimatrices_funcion(self):
         matrix = self.getMatrix()
         if not matrix:
@@ -135,7 +137,6 @@ class Principal(QMainWindow):
         else:
             self.VentanaInversa = ProductoM_GUI(matrix)
             self.VentanaInversa.show()
-        
 
     def escalar_funcion(self):
         self.getMatrix()
@@ -145,24 +146,24 @@ class Principal(QMainWindow):
 
     def determinante_funcion(self):
         # self.mainWindow = homeAdmin(self.id)
-        self.ventana_determinante=Determinante(self.getMatrix())
+        self.ventana_determinante = Determinante(self.getMatrix())
         self.ventana_determinante.show()
         self.close()
 
     def inversa_funcion(self):
         # self.mainWindow = homeAdmin(self.id)
-        #print(np.array(self.getMatrix()))
+        # print(np.array(self.getMatrix()))
         matrix = self.getMatrix()
         if not matrix:
             QMessageBox.warning(self, 'Error', 'Fill all cells')
         else:
             self.VentanaInversa = Inverse_GUI(np.array(matrix))
             self.VentanaInversa.show()
-        #self.close()
+        # self.close()
 
     def transpuesta_funcion(self):
         # self.mainWindow = homeAdmin(self.id)
-        self.ventana_transpose= Transpose(np.array(self.getMatrix()))
+        self.ventana_transpose = Transpose(np.array(self.getMatrix()))
         self.ventana_transpose.show()
         # self.close()
 
@@ -177,8 +178,8 @@ class Principal(QMainWindow):
         self.ventanaGauss.show()
         # self.close()
 
+
 app = QApplication(sys.argv)
 window = Principal()
 window.show()
 app.exec()
-

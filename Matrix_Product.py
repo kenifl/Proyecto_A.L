@@ -1,9 +1,5 @@
 # Matrix Product
 
-from fractions import Fraction
-
-from mysqlx import Row
-
 def calculate(m1 , m2):
    # print("Filas 1:",len(m1),"Columnas 1:",len(m1[0]))
    # print("Filas 2:",len(m2),"Columnas 2:",len(m2[0]))
