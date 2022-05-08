@@ -52,3 +52,6 @@ def adjugate(matrix):
 def inverse(matrix):
     inverse_matrix = adjugate(matrix)/determinant(matrix)
     return inverse_matrix
+
+#matrix = np.array([[1,0,3],[3,6,6],[6,0,9]])
+#print(inverse(matrix))

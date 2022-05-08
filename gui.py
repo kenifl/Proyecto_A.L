@@ -4,6 +4,8 @@ import sys
 from PyQt6.QtCore import Qt, QSize
 from PyQt6.QtGui import QIcon, QFont, QPixmap, QPalette, QColor, QScreen
 from PyQt6.QtWidgets import *
+from inverse_gui import Inverse_GUI
+from fractions import Fraction
 
 matrix = []
 filas = 0
@@ -17,7 +19,7 @@ class Principal(QMainWindow):
         self.centerWindow() 
         self.initUI()
         self.setCentralWidget(self.wid)
-
+    
     def centerWindow(self):
         qtRectangle = self.frameGeometry()
         centerPoint = self.screen().availableGeometry().center()
@@ -31,6 +33,14 @@ class Principal(QMainWindow):
         horizontal2 = QHBoxLayout()
         box2 = QVBoxLayout()
         self.wid.setLayout(horizontal2)
+
+        self.rows = QLineEdit()
+        self.columns = QLineEdit()
+        self.genMatrix = QPushButton('Ingresar datos')
+        self.genMatrix.clicked.connect(self.generateTable)
+
+        self.tabla = QTableWidget()
+        self.tabla.setVisible(False)
 
         qhorizontal.addWidget(self.rows)
         qhorizontal.addWidget(QLabel('x'))
@@ -78,8 +88,9 @@ class Principal(QMainWindow):
         for i in range(self.tabla.rowCount()):
             row = []
             for j in range(self.tabla.columnCount()):
-                row.append(self.tabla.item(i, j).text())
+                row.append(Fraction(self.tabla.item(i, j).text()))
             matrix.append(row)
+        return matrix
     
     def suma(self):
         self.getMatrix()
@@ -106,9 +117,9 @@ class Principal(QMainWindow):
         self.close()
 
     def inversa(self):
-        self.getMatrix()
         # self.mainWindow = homeAdmin(self.id)
-        self.mainWindow.show()
+        self.VentanaInversa = Inverse_GUI(self.getMatrix())
+        self.VentanaInversa.show()
         self.close()
 
     def transpuesta(self):
@@ -214,7 +225,7 @@ class Producto_escalar(QMainWindow):
         self.close()
 
 app = QApplication(sys.argv)
-window = Determinante()
+window = Principal()
 window.show()
 app.exec()
 
