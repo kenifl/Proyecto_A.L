@@ -1,12 +1,13 @@
 # USE PYQT and create a 3z2 grid of buttons
-from fractions import Fraction
-from importlib.metadata import FileHash
 import sys
 from PyQt6.QtCore import Qt, QSize
 from PyQt6.QtGui import QIcon, QFont, QPixmap, QPalette, QColor, QScreen
 from PyQt6.QtWidgets import *
-from determinat_gui import Determinante
+from Transpose_GUI import Transpose
+from determinant_gui import Determinante
 from inverse_gui import Inverse_GUI
+from fractions import Fraction
+from gaussGui import GaussJordanUI
 import numpy as np
 
 filas = 0
@@ -139,12 +140,10 @@ class Principal(QMainWindow):
         self.mainWindow.show()
         self.close()
 
-    def determinante_funcion(self):
-        self.getMatrix()
+    def determinante(self):
         # self.mainWindow = homeAdmin(self.id)
-        #self.mainWindow.show()
-        window_determinante =  Determinante()
-        window_determinante.show()
+        self.venatana_determinante=Determinante(self.getMatrix())
+        self.venatana_determinante.show()
         self.close()
 
     def inversa_funcion(self):
@@ -158,11 +157,11 @@ class Principal(QMainWindow):
             self.VentanaInversa.show()
         #self.close()
 
-    def transpuesta_funcion(self):
-        self.getMatrix()
+    def transpuesta(self):
         # self.mainWindow = homeAdmin(self.id)
-        self.mainWindow.show()
-        self.close()
+        self.ventana_transpose= Transpose(np.array(self.getMatrix()))
+        self.venatana_determinante.show()
+        # self.close()
 
     def adjunta_funcion(self):
         self.getMatrix()
@@ -170,11 +169,10 @@ class Principal(QMainWindow):
         self.mainWindow.show()
         self.close()
 
-    def gauss_funcion(self):
-        self.getMatrix()
-        # self.mainWindow = homeAdmin(self.id)
-        self.mainWindow.show()
-        self.close()
+    def gauss(self):
+        self.ventanaGauss = GaussJordanUI(self.getMatrix())
+        self.ventanaGauss.show()
+        # self.close()
 
 
 
