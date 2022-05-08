@@ -31,6 +31,7 @@ class Principal(QMainWindow):
 
     def initUI(self):
         self.wid = QWidget()
+        self.wid.setStyleSheet("background-color: #daf2ff")
         box = QVBoxLayout()
         qhorizontal = QHBoxLayout()
         horizontal2 = QHBoxLayout()
@@ -150,7 +151,6 @@ class Principal(QMainWindow):
         self.ventana_determinante.show()
         self.close()
 
-<<<<<<< HEAD
     def determinante(self):
         # self.mainWindow = homeAdmin(self.id)
         self.venatana_determinante=Determinante(self.getMatrix())
@@ -158,9 +158,6 @@ class Principal(QMainWindow):
         #self.close()
 
     def inversa(self):
-=======
-    def inversa_funcion(self):
->>>>>>> 6cc5edcb5323407436c3ba21dc53b84d931863cd
         # self.mainWindow = homeAdmin(self.id)
         #print(np.array(self.getMatrix()))
         matrix = self.getMatrix()
@@ -177,18 +174,10 @@ class Principal(QMainWindow):
         self.ventana_transpose.show()
         # self.close()
 
-<<<<<<< HEAD
     def adjunta(self):
         self.ventana_adjugate=Adjugate(np.array(self.getMatrix()))
         self.ventana_adjugate.show()
         #self.close
-=======
-    def adjunta_funcion(self):
-        self.getMatrix()
-        # self.mainWindow = homeAdmin(self.id)
-        self.mainWindow.show()
-        self.close()
->>>>>>> 6cc5edcb5323407436c3ba21dc53b84d931863cd
 
     def gauss_funcion(self):
         self.ventanaGauss = GaussJordanUI(self.getMatrix())
