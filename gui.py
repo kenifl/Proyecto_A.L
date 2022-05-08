@@ -1,11 +1,11 @@
 # USE PYQT and create a 3z2 grid of buttons
-from importlib.metadata import FileHash
 import sys
 from PyQt6.QtCore import Qt, QSize
 from PyQt6.QtGui import QIcon, QFont, QPixmap, QPalette, QColor, QScreen
 from PyQt6.QtWidgets import *
 from inverse_gui import Inverse_GUI
 from fractions import Fraction
+from gaussGui import GaussJordanUI
 
 matrix = []
 filas = 0
@@ -135,10 +135,9 @@ class Principal(QMainWindow):
         self.close()
 
     def gauss(self):
-        self.getMatrix()
-        # self.mainWindow = homeAdmin(self.id)
-        self.mainWindow.show()
-        self.close()
+        self.ventanaGauss = GaussJordanUI(self.getMatrix())
+        self.ventanaGauss.show()
+        # self.close()
 
 class Determinante(QMainWindow):
     def __init__(self):
