@@ -57,7 +57,7 @@ class Principal(QMainWindow):
         self.suma = QPushButton('Addition')
         self.suma.clicked.connect(self.suma_matrices)
         self.suma.setEnabled(False)
-        self.multiMatrices = QPushButton('Multiplicación de matrices')
+        self.multiMatrices = QPushButton('Matrix multiplication')
         self.multiMatrices.clicked.connect(self.multimatrices_funcion)
         self.multiMatrices.setEnabled(False)
         self.escalar = QPushButton('Scalar multiplication')
@@ -140,17 +140,13 @@ class Principal(QMainWindow):
 
     def escalar_funcion(self):
         self.getMatrix()
-        # self.mainWindow = homeAdmin(self.id)
         self.mainWindow.show()
 
     def determinante_funcion(self):
-        # self.mainWindow = homeAdmin(self.id)
         self.ventana_determinante = Determinante(self.getMatrix())
         self.ventana_determinante.show()
 
     def inversa_funcion(self):
-        # self.mainWindow = homeAdmin(self.id)
-        # print(np.array(self.getMatrix()))
         matrix = self.getMatrix()
         if not matrix:
             QMessageBox.warning(self, 'Error', 'Fill all cells')
@@ -159,7 +155,6 @@ class Principal(QMainWindow):
             self.VentanaInversa.show()
 
     def transpuesta_funcion(self):
-        # self.mainWindow = homeAdmin(self.id)
         self.ventana_transpose = Transpose(np.array(self.getMatrix()))
         self.ventana_transpose.show()
 

@@ -53,15 +53,5 @@ class Inverse_GUI(QMainWindow):
                 layout_procedimiento.addLayout(grid_result)
 
             self.wid.setLayout(grid_grandote)
-        #else:
-            #self.wid = QWidget()
-            #QMessageBox.warning(self, 'Error', inverse(self.matrix))
-            #self.cerrar()
-        
-#app = QApplication(sys.argv)
-#window = Inverse_GUI()
-#window.show()
-#app.exec()
-
 
 
