@@ -1,11 +1,10 @@
+from unittest import result
 from PyQt6.QtCore import Qt, QSize
 from PyQt6.QtGui import QIcon, QFont, QPixmap, QPalette, QColor, QScreen
 from PyQt6.QtWidgets import *
 from fractions import Fraction
-from determinant_inverse_transpose import inverse
+from Scalar_Product import scalar_product
 import numpy as np
-from Matrix_Product import calculate
-
 
 class ProductoS_GUI(QMainWindow):
     def __init__(self, matrix=[[5, 4, 5], [4, 7, 6], [5, 3, 1]]):
@@ -58,29 +57,14 @@ class ProductoS_GUI(QMainWindow):
             self.labels['resultado'] = QLabel('')
             self.grid_result.addWidget(self.labels['resultado'], 0, 0)
 
-    def actualizar_matriz(self):
-        self.tabla.setColumnCount(int(self.num_columnas.text()))
-
-    def get_matrix(self):
-        matrix = []
-        for i in range(self.tabla.rowCount()):
-            row = []
-            for j in range(self.tabla.columnCount()):
-                if (self.tabla.item(i, j) == None or self.tabla.item(i, j).text() == ''):
-                    QMessageBox.warning(self, 'Error', 'No se puede ingresar una celda vacía')
-                    return False
-                else:
-                    row.append(Fraction(self.tabla.item(i, j).text()))
-            matrix.append(row)
-        return matrix
-
     def resultado(self):
-        matrix_2 = self.get_matrix()
+        escalar = self.scalar.text()
         self.labels['resultado'].setText('')
-        if (not matrix_2):
-            self.labels['resultado'].setText('Error, no se puede realizar la operación')
+        if (escalar == ''):
+            self.labels['resultado'].setText('Error, the scalar is empty')
         else:
-            result = calculate(self.matrix, matrix_2)
+            escalar = int(escalar)
+            result = scalar_product(self.matrix, escalar)
             for i in range(len(result)):
                 for j in range(len(result[i])):
                     label = QLabel(str(result[i][j]))
