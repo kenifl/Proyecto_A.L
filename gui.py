@@ -1,12 +1,13 @@
 import sys
 from PyQt6.QtWidgets import *
 from Adjugate_GUI import Adjugate
+from ScalarGui import ProductoS_GUI
 from Transpose_GUI import Transpose
 from determinant_gui import Determinante
 from inverse_gui import Inverse_GUI
 from fractions import Fraction
 from Producto_Matrices import ProductoM_GUI
-from suma_matriz import suma_matriz
+from SumaGUI import Add
 from gaussGui import GaussJordanUI
 import numpy as np
 
@@ -139,26 +140,14 @@ class Principal(QMainWindow):
             self.VentanaInversa.show()
 
     def escalar_funcion(self):
-        self.getMatrix()
-        self.mainWindow.show()
+        self.ventanaScalar = ProductoS_GUI(self.getMatrix())
+        self.ventanaScalar.show()
 
     def determinante_funcion(self):
         self.ventana_determinante = Determinante(self.getMatrix())
         self.ventana_determinante.show()
 
-<<<<<<< HEAD
-    def determinante(self):
-        # self.mainWindow = homeAdmin(self.id)
-        self.venatana_determinante=Determinante(self.getMatrix())
-        self.venatana_determinante.show()
-        #self.close()
-
-    def inversa(self):
-        # self.mainWindow = homeAdmin(self.id)
-        # print(np.array(self.getMatrix()))
-=======
     def inversa_funcion(self):
->>>>>>> 1b1b3a7c80eb06e8b349a0ca31cda3c807effa2a
         matrix = self.getMatrix()
         if not matrix:
             QMessageBox.warning(self, 'Error', 'Fill all cells')
@@ -170,17 +159,9 @@ class Principal(QMainWindow):
         self.ventana_transpose = Transpose(np.array(self.getMatrix()))
         self.ventana_transpose.show()
 
-<<<<<<< HEAD
-    def adjunta(self):
+    def adjunta_funcion(self):
         self.ventana_adjugate=Adjugate(np.array(self.getMatrix()))
         self.ventana_adjugate.show()
-        #self.close
-=======
-    def adjunta_funcion(self):
-        self.getMatrix()
-        # self.mainWindow = homeAdmin(self.id)
-        self.mainWindow.show()
->>>>>>> 1b1b3a7c80eb06e8b349a0ca31cda3c807effa2a
 
     def gauss_funcion(self):
         self.ventanaGauss = GaussJordanUI(self.getMatrix())

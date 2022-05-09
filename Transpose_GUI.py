@@ -52,14 +52,5 @@ class Transpose(QMainWindow):
 
 def cerrar(self):
     self.close()
-<<<<<<< HEAD
-        
-# app = QApplication(sys.argv)
-# window = Transpose()
-# window.show()
-# app.exec()
-
-=======
->>>>>>> 1b1b3a7c80eb06e8b349a0ca31cda3c807effa2a
 
 

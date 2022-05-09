@@ -54,16 +54,4 @@ class Determinante(QMainWindow):
         grid.addWidget(label_2, 0, 3)
 
     
-<<<<<<< HEAD
         self.wid.setLayout(b_grid)
-        
-def cerrar(self):
-    self.close()
-
-# app = QApplication(sys.argv)
-# window = Determinante()
-# window.show()
-# app.exec()
-=======
-        self.wid.setLayout(b_grid)
->>>>>>> 1b1b3a7c80eb06e8b349a0ca31cda3c807effa2a
