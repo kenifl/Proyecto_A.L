@@ -64,9 +64,3 @@ def inverse(matrix):
         return inverse_matrix
     else:
         return "Error, determinant is 0"
-    
-
-#matrix = np.array([[5,4,5],[4,7,6],[5,3,1]])
-#matrix = np.array([[0,0,0],[0,0,0],[0,0,0]])
-#matrix = np.array([[6,9],[5,9]])
-#print(inverse(matrix))
