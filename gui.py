@@ -1,13 +1,13 @@
 import sys
 from PyQt6.QtWidgets import *
-
-from SumaGUI import Add
+from Adjugate_GUI import Adjugate
+from ScalarGui import ProductoS_GUI
 from Transpose_GUI import Transpose
 from determinant_gui import Determinante
 from inverse_gui import Inverse_GUI
 from fractions import Fraction
 from Producto_Matrices import ProductoM_GUI
-from suma_matriz import suma_matriz
+from SumaGUI import Add
 from gaussGui import GaussJordanUI
 import numpy as np
 
@@ -33,6 +33,7 @@ class Principal(QMainWindow):
 
     def initUI(self):
         self.wid = QWidget()
+        self.wid.setStyleSheet("background-color: #daf2ff")
         box = QVBoxLayout()
         qhorizontal = QHBoxLayout()
         horizontal2 = QHBoxLayout()
@@ -140,8 +141,8 @@ class Principal(QMainWindow):
             self.VentanaInversa.show()
 
     def escalar_funcion(self):
-        self.getMatrix()
-        self.mainWindow.show()
+        self.ventanaScalar = ProductoS_GUI(self.getMatrix())
+        self.ventanaScalar.show()
 
     def determinante_funcion(self):
         self.ventana_determinante = Determinante(self.getMatrix())
@@ -160,9 +161,8 @@ class Principal(QMainWindow):
         self.ventana_transpose.show()
 
     def adjunta_funcion(self):
-        self.getMatrix()
-        # self.mainWindow = homeAdmin(self.id)
-        self.mainWindow.show()
+        self.ventana_adjugate=Adjugate(np.array(self.getMatrix()))
+        self.ventana_adjugate.show()
 
     def gauss_funcion(self):
         self.ventanaGauss = GaussJordanUI(self.getMatrix())
