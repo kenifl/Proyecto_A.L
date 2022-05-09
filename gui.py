@@ -142,13 +142,11 @@ class Principal(QMainWindow):
         self.getMatrix()
         # self.mainWindow = homeAdmin(self.id)
         self.mainWindow.show()
-        self.close()
 
     def determinante_funcion(self):
         # self.mainWindow = homeAdmin(self.id)
         self.ventana_determinante = Determinante(self.getMatrix())
         self.ventana_determinante.show()
-        self.close()
 
     def inversa_funcion(self):
         # self.mainWindow = homeAdmin(self.id)
@@ -159,24 +157,20 @@ class Principal(QMainWindow):
         else:
             self.VentanaInversa = Inverse_GUI(np.array(matrix))
             self.VentanaInversa.show()
-        # self.close()
 
     def transpuesta_funcion(self):
         # self.mainWindow = homeAdmin(self.id)
         self.ventana_transpose = Transpose(np.array(self.getMatrix()))
         self.ventana_transpose.show()
-        # self.close()
 
     def adjunta_funcion(self):
         self.getMatrix()
         # self.mainWindow = homeAdmin(self.id)
         self.mainWindow.show()
-        self.close()
 
     def gauss_funcion(self):
         self.ventanaGauss = GaussJordanUI(self.getMatrix())
         self.ventanaGauss.show()
-        # self.close()
 
 
 app = QApplication(sys.argv)
