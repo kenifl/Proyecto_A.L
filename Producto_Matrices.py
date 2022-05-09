@@ -42,6 +42,7 @@ class ProductoM_GUI(QMainWindow):
             self.num_columnas = QLineEdit()
             layout_line_button.addWidget(self.num_columnas)
             self.boton_procedimiento = QPushButton('Update')
+            self.boton_procedimiento.clicked.connect(self.actualizar_matriz)
             layout_line_button.addWidget(self.boton_procedimiento)
             layout_procedimiento.addWidget(self.boton_procedimiento)
             self.tabla = QTableWidget()

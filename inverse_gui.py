@@ -42,22 +42,16 @@ class Inverse_GUI(QMainWindow):
         
             label_inverse = QLabel('Matriz inversa:')
             layout_procedimiento.addWidget(label_inverse)
-            for j in range(len(inverse_matrix)):
-                for i in range(len(inverse_matrix[j])):
-                    label = QLabel(str(inverse_matrix[j][i]))
-                    grid_result.addWidget(label, j, i)
-            layout_procedimiento.addLayout(grid_result)
+            if (type(inverse_matrix) == str):
+                label_inverse = QLabel(inverse_matrix)
+                layout_procedimiento.addWidget(label_inverse)
+            else:
+                for j in range(len(inverse_matrix)):
+                    for i in range(len(inverse_matrix[j])):
+                        label = QLabel(str(inverse_matrix[j][i]))
+                        grid_result.addWidget(label, j, i)
+                layout_procedimiento.addLayout(grid_result)
 
             self.wid.setLayout(grid_grandote)
-        #else:
-            #self.wid = QWidget()
-            #QMessageBox.warning(self, 'Error', inverse(self.matrix))
-            #self.cerrar()
-        
-#app = QApplication(sys.argv)
-#window = Inverse_GUI()
-#window.show()
-#app.exec()
-
 
 

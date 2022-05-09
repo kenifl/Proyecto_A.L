@@ -57,7 +57,7 @@ class Principal(QMainWindow):
         self.suma = QPushButton('Addition')
         self.suma.clicked.connect(self.suma_matrices)
         self.suma.setEnabled(False)
-        self.multiMatrices = QPushButton('Multiplicación de matrices')
+        self.multiMatrices = QPushButton('Matrix multiplication')
         self.multiMatrices.clicked.connect(self.multimatrices_funcion)
         self.multiMatrices.setEnabled(False)
         self.escalar = QPushButton('Scalar multiplication')
@@ -140,16 +140,13 @@ class Principal(QMainWindow):
 
     def escalar_funcion(self):
         self.getMatrix()
-        # self.mainWindow = homeAdmin(self.id)
         self.mainWindow.show()
-        self.close()
 
     def determinante_funcion(self):
-        # self.mainWindow = homeAdmin(self.id)
         self.ventana_determinante = Determinante(self.getMatrix())
         self.ventana_determinante.show()
-        self.close()
 
+<<<<<<< HEAD
     def determinante(self):
         # self.mainWindow = homeAdmin(self.id)
         self.venatana_determinante=Determinante(self.getMatrix())
@@ -159,29 +156,35 @@ class Principal(QMainWindow):
     def inversa(self):
         # self.mainWindow = homeAdmin(self.id)
         # print(np.array(self.getMatrix()))
+=======
+    def inversa_funcion(self):
+>>>>>>> 1b1b3a7c80eb06e8b349a0ca31cda3c807effa2a
         matrix = self.getMatrix()
         if not matrix:
             QMessageBox.warning(self, 'Error', 'Fill all cells')
         else:
             self.VentanaInversa = Inverse_GUI(np.array(matrix))
             self.VentanaInversa.show()
-        # self.close()
 
     def transpuesta_funcion(self):
-        # self.mainWindow = homeAdmin(self.id)
         self.ventana_transpose = Transpose(np.array(self.getMatrix()))
         self.ventana_transpose.show()
-        # self.close()
 
+<<<<<<< HEAD
     def adjunta(self):
         self.ventana_adjugate=Adjugate(np.array(self.getMatrix()))
         self.ventana_adjugate.show()
         #self.close
+=======
+    def adjunta_funcion(self):
+        self.getMatrix()
+        # self.mainWindow = homeAdmin(self.id)
+        self.mainWindow.show()
+>>>>>>> 1b1b3a7c80eb06e8b349a0ca31cda3c807effa2a
 
     def gauss_funcion(self):
         self.ventanaGauss = GaussJordanUI(self.getMatrix())
         self.ventanaGauss.show()
-        # self.close()
 
 
 app = QApplication(sys.argv)
