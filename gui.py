@@ -32,7 +32,6 @@ class Principal(QMainWindow):
 
     def initUI(self):
         self.wid = QWidget()
-        self.wid.setStyleSheet("background-color: #daf2ff")
         box = QVBoxLayout()
         qhorizontal = QHBoxLayout()
         horizontal2 = QHBoxLayout()
