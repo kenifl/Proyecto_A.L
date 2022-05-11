@@ -38,7 +38,7 @@ class ProductoS_GUI(QMainWindow):
             layout_line_button.addWidget(label_procedimiento)
             self.scalar = QLineEdit()
             layout_line_button.addWidget(self.scalar)
-            self.boton_resultado = QPushButton('Resultado')
+            self.boton_resultado = QPushButton('Result')
             self.boton_resultado.clicked.connect(self.resultado)
             layout_procedimiento.addWidget(self.boton_resultado)
             # create labels
@@ -57,7 +57,12 @@ class ProductoS_GUI(QMainWindow):
             self.labels['resultado'] = QLabel('')
             self.grid_result.addWidget(self.labels['resultado'], 0, 0)
 
+            for i in range(len(self.matrix)):
+                for j in range(len(self.matrix[i])):
+                    self.grid_result.addWidget(QLabel(''), i, j)
+
     def resultado(self):
+        self.clearResult()
         escalar = self.scalar.text()
         self.labels['resultado'].setText('')
         if (escalar == ''):
@@ -67,5 +72,9 @@ class ProductoS_GUI(QMainWindow):
             result = scalar_product(self.matrix, escalar)
             for i in range(len(result)):
                 for j in range(len(result[i])):
-                    label = QLabel(str(result[i][j]))
-                    self.grid_result.addWidget(label, i, j)
+                    self.grid_result.itemAtPosition(i, j).widget().setText(str(result[i][j]))
+    
+    def clearResult(self):
+        for i in range(len(self.matrix)):
+                for j in range(len(self.matrix[i])):
+                    self.grid_result.itemAtPosition(i, j).widget().setText("")
