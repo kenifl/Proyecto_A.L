@@ -114,7 +114,7 @@ class Principal(QMainWindow):
         for i in range(self.tabla.rowCount()):
             row = []
             for j in range(self.tabla.columnCount()):
-                if (self.tabla.item(i, j) == None):
+                if (self.tabla.item(i, j) == None or self.tabla.item(i, j).text() == ''):
                     QMessageBox.warning(self, 'Error', 'Fill all cells')
                     return False
                 else:
