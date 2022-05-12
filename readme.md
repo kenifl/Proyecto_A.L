@@ -78,7 +78,7 @@ Once you entered a square matrix in the main menu, click the “Inverse” butto
 
 WARNING: If the matrix doesn’t have an inverse matrix this message will appear               
 
-![warning_determinant_zero]               
+![warning_determinant_zero](/images/unamed%20(15).png)          
 
 
 ###### MATRIX MULTIPLICATION
