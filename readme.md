@@ -4,20 +4,36 @@ To install and use [go to Releases and install the newest version](https://githu
 
 ## User guide
 
-Type the shape of the matrix and click input data 
-![main_window](/images/unnamed.png)
-It will appear a table where you can enter the values of the matrix
-![main_matrix](/images/unnamed%20(1).png)
-Once you enter the values of the matrix, you will be able to do the operation you want
-![ready_to_click](/images/unnamed%20(2).png)
-NOTE: You will only be able to do the operations the matrix suits the requirements for, otherwise the buttons will be disable as shown
-![disable_buttons](/images/unnamed%20(3).png)
-WARNING: you need to fill all cells, otherwise the following window will pop up
-![fill_all_cells](/images/unnamed%20(4).png)
+Type the shape of the matrix and click input data             
+
+![main_window](/images/unnamed.png)             
+
+
+It will appear a table where you can enter the values of the matrix            
+
+![main_matrix](/images/unnamed%20(1).png)                
+
+
+Once you enter the values of the matrix, you will be able to do the operation you want                
+
+![ready_to_click](/images/unnamed%20(2).png)                
+
+
+NOTE: You will only be able to do the operations the matrix suits the requirements for, otherwise the buttons will be disable as shown       
+
+![disable_buttons](/images/unnamed%20(3).png)          
+
+
+WARNING: you need to fill all cells, otherwise the following window will pop up                
+
+![fill_all_cells](/images/unnamed%20(4).png)                
+
 
 ###### MATRIX ADDITION
-When you click the addition button you will see a window, the left side shows the matrix you entered and the right side shows a table where you need to enter the matrix you want to add.
-![additon_window](/images/unnamed%20(5).png)
+When you click the addition button you will see a window, the left side shows the matrix you entered and the right side shows a table where you need to enter the matrix you want to add.           
+
+![additon_window](/images/unnamed%20(5).png)           
+
 Once you enter the second matrix, and you click on the result button, you will receive the resultant matrix on the right side of the pop-up window.
 ![addition_result](/images/unnamed%20(6).png)
 WARNING: you need to fill all cells, otherwise the following window will pop up
